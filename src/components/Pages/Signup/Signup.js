@@ -6,7 +6,6 @@ const Signup = () => {
         <div className="hero my-10">
             <div className="hero-content flex-col lg:flex-row gap-20 my-16">
                 <div className="text-center lg:text-left">
-                    {/* <img src={img} alt="" srcset="" /> */}
                 </div>
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                     <form className="card-body">
@@ -30,10 +29,10 @@ const Signup = () => {
                             <input type="password" name='password' placeholder="password" className="input input-bordered" required />
                         </div>
                         <div className="form-control mt-6">
-                            <input className="btn bg-[#FF3811]" type="submit" value="Sign Up" />
+                            <input className="btn" type="submit" value="Sign Up" />
                         </div>
                     </form>
-                    <p className='text-center mb-5'>Already have an account plz <Link to='/login' className='text-[#FF3811] font-bold'>Login In</Link> </p>
+                    <p className='text-center mb-5'>Already have an account plz <Link to='/login' className='font-bold'>Login In</Link> </p>
                 </div>
             </div>
         </div>
