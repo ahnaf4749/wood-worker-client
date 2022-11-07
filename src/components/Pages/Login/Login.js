@@ -1,8 +1,25 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { FaGoogle } from "react-icons/fa";
+import { AuthContext } from '../../../context/Authprovider/Authprovider';
+import { toast } from 'react-toastify';
 
 const Login = () => {
+
+    const { googleLogin } = useContext(AuthContext);
+
+    const handleGoogleLOgin = () => {
+        googleLogin()
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                if (user.uid) {
+                    toast('wow your google login is succesfully')
+                }
+            })
+            .catch(error => console.error(error))
+    }
+
     return (
         <div className="hero">
             <div className="hero-content flex-col lg:flex-row gap-20 my-16">
@@ -32,7 +49,7 @@ const Login = () => {
                     </form>
                     <div className='text-center'>
                         <p>-------Login with social accounts-------</p>
-                        <button className="btn btn-outline btn-info my-5"><FaGoogle className='mr-2'></FaGoogle>Google login</button>
+                        <button onClick={handleGoogleLOgin} className="btn btn-outline btn-info my-5"><FaGoogle className='mr-2'></FaGoogle>Google login</button>
                     </div>
                     <p className='text-center mb-5'>Don't have an account? <Link to='/signup' className='font-bold'>Sign In</Link> </p>
                 </div>
