@@ -18,8 +18,9 @@ const Signup = () => {
             .then(result => {
                 const user = result.user;
                 if (user.uid) {
-                    toast('Signup succesfully')
+                    toast.success('Signup succesfully')
                 }
+                form.reset()
             })
             .catch(error => console.error(error))
     }

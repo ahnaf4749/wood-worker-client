@@ -17,8 +17,9 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 if (user.uid) {
-                    toast('login succesfully')
+                    toast.success('login succesfully')
                 }
+                form.reset();
             })
             .catch(error => console.error(error))
     }
@@ -29,7 +30,7 @@ const Login = () => {
                 const user = result.user;
                 console.log(user);
                 if (user.uid) {
-                    toast('wow your google login is succesfully')
+                    toast.success('wow your google login is succesfully')
                 }
             })
             .catch(error => console.error(error))

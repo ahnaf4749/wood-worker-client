@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { FaUser } from "react-icons/fa";
 import { AuthContext } from '../../../context/Authprovider/Authprovider';
 
 const Header = () => {
@@ -51,7 +52,16 @@ const Header = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <button className="btn btn-outline btn-warning">Warning</button>
+                <div className="tooltip" data-tip={user?.displayName}>
+                    <div className="w-10">
+                        {
+                            user?.photoURL ?
+                                <img className='rounded-full' src={user?.photoURL} alt='' />
+                                :
+                                <FaUser></FaUser>
+                        }
+                    </div>
+                </div>
             </div>
         </div>
     );
