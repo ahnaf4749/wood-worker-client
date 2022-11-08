@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import Servicecard from './Servicecard';
 
 const Servicess = () => {
@@ -6,10 +7,9 @@ const Servicess = () => {
     const [services, setServices] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/services')
+        fetch('http://localhost:5000/limitservices')
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 setServices(data)
             })
     }, [])
@@ -26,7 +26,7 @@ const Servicess = () => {
                 }
             </div>
             <div className='text-center mt-10'>
-                <button className="btn">VIEW ALL SERVICES</button>
+                <button className="btn"><Link to='/services'>VIEW ALL SERVICES</Link></button>
             </div>
         </div>
     );
