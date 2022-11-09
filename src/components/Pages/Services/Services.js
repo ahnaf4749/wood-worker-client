@@ -13,7 +13,8 @@ const Services = () => {
     }, [])
 
     return (
-        <div className=' mt-10'>
+        <div>
+            <p className='text-center font-bold text-4xl underline'>ALL SERVICES</p>
             <div className='grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-y-5 my-5'>
                 {
                     services.map(service => <Servicecard
