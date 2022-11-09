@@ -1,13 +1,15 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../../context/Authprovider/Authprovider';
 import Serviceaccour from './Serviceaccour';
 import ServicePrice from './ServicePrice';
+import Servicereview from './Servicereview';
 
 const Servicedetails = () => {
     const { _id, image, name, service, details, price } = useLoaderData();
     const { user } = useContext(AuthContext);
+    const [reviews, setReviews] = useState([])
 
 
 
@@ -16,6 +18,7 @@ const Servicedetails = () => {
         const form = e.target;
         const reviewName = form.reviewName.value;
         const email = user?.email || 'unregistered';
+        const photoURL = user?.photoURL || "undefiend"
         const reating = form.reating.value;
         const message = form.message.value;
         console.log(reating, message, name);
@@ -25,6 +28,7 @@ const Servicedetails = () => {
             serviceName: name,
             authorname: reviewName,
             email,
+            photoURL,
             reating,
             message
 
@@ -46,7 +50,17 @@ const Servicedetails = () => {
                 }
             })
             .catch(error => console.error(error))
+
     }
+
+    useEffect(() => {
+        fetch('http://localhost:5000/reviews')
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                setReviews(data)
+            })
+    }, [])
 
     return (
         <div>
@@ -75,18 +89,26 @@ const Servicedetails = () => {
                         user?.uid ?
 
                             <form onSubmit={handlePlaceOrder}>
-                                <div className='grid lg:grid-cols-2 sm:grid-cols-1 gap-5 my-5'>
-                                    <input type="text" name='reviewName' placeholder="Name" className="input input-bordered w-full " />
-                                    <input type="text" name='reating' placeholder="Your Reating" className="input input-bordered w-full " />
+                                <div className='grid lg:grid-cols-2 sm:grid-cols-1 gap-5 my-5 p-5'>
+                                    <input type="text" name='reviewName' placeholder="Name" className="input input-bordered w-full " required />
+                                    <input type="text" name='reating' placeholder="Your Reating" className="input input-bordered w-full " required />
                                 </div>
                                 <textarea name='message' className="textarea textarea-bordered h-24 w-full my-5" placeholder="Your message"></textarea>
-                                <div className='text-center'>
+                                <div className='text-center p-5'>
                                     <input type="submit" value="Submit" className="btn my-5" />
                                 </div>
                             </form>
 
                             :
                             <p>plz login</p>
+                    }
+                </div>
+                <div className='grid lg:grid-cols-3 md:grid-cols-2 gap-5 my-10 p-5'>
+                    {
+                        reviews.map(review => <Servicereview
+                            key={review._id}
+                            review={review}
+                        ></Servicereview>)
                     }
                 </div>
             </div>
