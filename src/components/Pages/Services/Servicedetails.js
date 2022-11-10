@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../../context/Authprovider/Authprovider';
 import Serviceaccour from './Serviceaccour';
@@ -34,7 +34,7 @@ const Servicedetails = () => {
 
         }
 
-        fetch('http://localhost:5000/reviews', {
+        fetch('https://assaienment-11-servar.vercel.app/reviews', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -54,13 +54,13 @@ const Servicedetails = () => {
     }
 
     useEffect(() => {
-        fetch(`http://localhost:5000/reviews?service=${service}`)
+        fetch(`https://assaienment-11-servar.vercel.app/serviceReviews?service=${service.id}`)
             .then(res => res.json())
             .then(data => {
                 console.log(data);
                 setReviewss(data)
             })
-    }, [service])
+    }, [service.id])
 
     return (
         <div>
@@ -89,27 +89,35 @@ const Servicedetails = () => {
                         user?.uid ?
 
                             <form onSubmit={handlePlaceOrder}>
-                                <div className='grid lg:grid-cols-2 sm:grid-cols-1 gap-5 my-5 p-5'>
+                                <p className='text-center text-4xl underline font-bold mt-5' >Add review</p>
+                                <div className='grid lg:grid-cols-2 sm:grid-cols-1 gap-5 p-5'>
                                     <input type="text" name='reviewName' placeholder="Name" className="input input-bordered w-full " required />
                                     <input type="text" name='reating' placeholder="Your Reating" className="input input-bordered w-full " required />
                                 </div>
-                                <textarea name='message' className="textarea textarea-bordered h-24 w-full my-5" placeholder="Your message"></textarea>
-                                <div className='text-center p-5'>
-                                    <input type="submit" value="Submit" className="btn my-5" />
+                                <div className='p-5'>
+                                    <textarea name='message' className="textarea textarea-bordered h-24 w-full my-5" placeholder="Your message"></textarea>
+                                </div>
+                                <div className='text-center'>
+                                    <input type="submit" value="Submit" className="btn my-2" />
                                 </div>
                             </form>
 
                             :
-                            <p>plz login</p>
+                            <>
+                                <p className='text-center text-4xl font-bold mt-5'><Link to='/login'>Login first and add to review</Link></p>
+                            </>
                     }
                 </div>
-                <div className='grid lg:grid-cols-3 md:grid-cols-2 gap-5 my-10 p-5'>
-                    {
-                        reviewss.map(review => <Servicereview
-                            key={review._id}
-                            review={review}
-                        ></Servicereview>)
-                    }
+                <div>
+                    <p className='text-center text-4xl font-bold mt-8 underline'>Review section</p>
+                    <div className='grid lg:grid-cols-3 md:grid-cols-2 gap-5 my-10 p-5'>
+                        {
+                            reviewss.map(review => <Servicereview
+                                key={review._id}
+                                review={review}
+                            ></Servicereview>)
+                        }
+                    </div>
                 </div>
             </div>
         </div>

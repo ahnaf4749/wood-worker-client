@@ -7,7 +7,7 @@ const Servicess = () => {
     const [services, setServices] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/limitservices')
+        fetch('https://assaienment-11-servar.vercel.app/limitservices')
             .then(res => res.json())
             .then(data => {
                 setServices(data)

@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Main from "../../../layout/Main";
 import Addservice from "../../Pages/Addservice/Addservice";
 import Blog from "../../Pages/Blog/Blog";
+import Errorpage from "../../Pages/Errorpage/Errorpage";
 import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login";
 import Reviews from "../../Pages/Reviews/Reviews";
@@ -25,7 +26,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/services',
-                element: <Privateroute><Services></Services></Privateroute>,
+                element: <Services></Services>,
             },
             {
                 path: '/login',
@@ -42,16 +43,20 @@ export const router = createBrowserRouter([
             {
                 path: '/serviceDetails/:id',
                 element: <Servicedetails></Servicedetails>,
-                loader: ({ params }) => fetch(`http://localhost:5000/services/${params.id}`)
+                loader: ({ params }) => fetch(`https://assaienment-11-servar.vercel.app/services/${params.id}`)
             },
             {
                 path: '/reviews',
-                element: <Privateroute><Reviews></Reviews></Privateroute>
+                element: <Reviews></Reviews>
             },
             {
                 path: '/addservice',
                 element: <Privateroute><Addservice></Addservice></Privateroute>
             }
-        ]
+        ],
+    },
+    {
+        path: '*',
+        element: <Errorpage></Errorpage>
     }
 ])

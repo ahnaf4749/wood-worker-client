@@ -16,12 +16,13 @@ const Header = () => {
     const menuitms = <>
         <li className='font-bold'><Link to='/'>Home</Link></li>
         <li className='font-bold'><Link to='/services'>Services</Link></li>
+
         <li className='font-bold'><Link to='/blog'>Blog</Link></li>
         {
             user?.uid ?
                 <>
-                    <li className='font-bold'><Link to='/reviews'>Reviews</Link></li>
                     <li className='font-bold'><Link to='/addservice'>Add Services</Link></li>
+                    <li className='font-bold'><Link to='/reviews'>My Reviews</Link></li>
                     <li className='font-bold'>
                         <button onClick={handleLogOut}>Log out</button>
                     </li>
@@ -45,8 +46,9 @@ const Header = () => {
                         {menuitms}
                     </ul>
                 </div>
-                <Link className="btn btn-ghost normal-case text-xl">
-                    {/* <img src={logo} alt="" srcset="" /> */}
+                <Link to='/' className="btn btn-ghost normal-case text-xl">
+                    <img className='h-11 w-11' src='https://img.freepik.com/premium-vector/carpenter-sawing-wood-table_7496-936.jpg?w=2000' alt="" srcset="" />
+                    <p>wood works</p>
                 </Link>
             </div>
             <div className="navbar-center hidden lg:flex">

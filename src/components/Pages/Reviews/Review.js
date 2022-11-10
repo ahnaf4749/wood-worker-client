@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { AuthContext } from '../../../context/Authprovider/Authprovider';
 
 const Review = ({ review, handleDelete }) => {
+    const { user } = useContext(AuthContext);
     const { photoURL, authorname, reating, message, serviceName, _id } = review;
 
 

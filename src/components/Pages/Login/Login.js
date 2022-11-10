@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaGoogle } from "react-icons/fa";
 import { AuthContext } from '../../../context/Authprovider/Authprovider';
 import { toast } from 'react-toastify';
@@ -7,6 +7,9 @@ import { toast } from 'react-toastify';
 const Login = () => {
 
     const { googleLogin, loginIn } = useContext(AuthContext);
+    const location = useLocation();
+    const navigate = useNavigate();
+    const from = location.state?.from?.pathname || "/";;
 
     const handleLogin = e => {
         e.preventDefault();
@@ -20,6 +23,7 @@ const Login = () => {
                     toast.success('login succesfully')
                 }
                 form.reset();
+                navigate(from, { replace: true });
             })
             .catch(error => console.error(error))
     }
@@ -32,6 +36,7 @@ const Login = () => {
                 if (user.uid) {
                     toast.success('wow your google login is succesfully')
                 }
+                navigate(from, { replace: true });
             })
             .catch(error => console.error(error))
     }
