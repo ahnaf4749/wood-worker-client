@@ -1,11 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../../context/Authprovider/Authprovider';
+import useTitels from '../../Hooks/useTitels';
 import Review from './Review';
 
 const Reviews = () => {
     const { user } = useContext(AuthContext);
     const [reviews, setReviews] = useState([]);
+    useTitels('Reviews')
 
     useEffect(() => {
         fetch(`https://assaienment-11-servar.vercel.app/myreviews?email=${user?.email}`)

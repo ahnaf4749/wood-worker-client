@@ -1,9 +1,11 @@
 import React, { useContext } from 'react';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../../context/Authprovider/Authprovider';
+import useTitels from '../../Hooks/useTitels';
 
 const Addservice = () => {
     const { user } = useContext(AuthContext)
+    useTitels('Addservice')
 
 
     const handleSubmit = e => {
