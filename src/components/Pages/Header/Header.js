@@ -14,22 +14,22 @@ const Header = () => {
     }
 
     const menuitms = <>
-        <li className='font-semibold'><Link to='/'>Home</Link></li>
-        <li className='font-semibold'><Link to='/services'>Services</Link></li>
-        <li className='font-semibold'><Link to='/blog'>Blog</Link></li>
+        <li className='font-bold'><Link to='/'>Home</Link></li>
+        <li className='font-bold'><Link to='/services'>Services</Link></li>
+        <li className='font-bold'><Link to='/blog'>Blog</Link></li>
         {
             user?.uid ?
                 <>
-                    {/* <li className='font-semibold'><Link to='/login'>Login</Link></li>
-                    <li className='font-semibold'><Link to='/signup'>Sign up</Link></li> */}
-                    <li className='font-semibold'>
+                    <li className='font-bold'><Link to='/reviews'>Reviews</Link></li>
+                    <li className='font-bold'><Link to='/login'>Add Services</Link></li>
+                    <li className='font-bold'>
                         <button onClick={handleLogOut}>Log out</button>
                     </li>
                 </>
                 :
                 <>
-                    <li className='font-semibold'><Link to='/login'>Login</Link></li>
-                    <li className='font-semibold'><Link to='/signup'>Sign up</Link></li>
+                    <li className='font-bold'><Link to='/login'>Login</Link></li>
+                    <li className='font-bold'><Link to='/signup'>Sign up</Link></li>
                 </>
         }
 
