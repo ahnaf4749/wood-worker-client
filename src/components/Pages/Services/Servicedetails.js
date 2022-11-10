@@ -54,13 +54,14 @@ const Servicedetails = () => {
     }
 
     useEffect(() => {
-        fetch(`https://assaienment-11-servar.vercel.app/serviceReviews?service=${service.id}`)
+        console.log(_id);
+        fetch(`https://assaienment-11-servar.vercel.app/serviceReviews?service=${_id}`)
             .then(res => res.json())
             .then(data => {
                 console.log(data);
                 setReviewss(data)
             })
-    }, [service.id])
+    }, [_id])
 
     return (
         <div>
