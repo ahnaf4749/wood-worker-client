@@ -8,7 +8,6 @@ const Slider = () => {
                 <img src="https://www.nerdynaut.com/wp-content/uploads/2020/10/Want-to-Become-a-Woodworking-Expert-950x500.jpg" className="w-full" alt='' />
                 <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
                     <a href="#slide4" className="btn btn-circle">❮</a>
-                    <p className='text-3xl'>work made of wood. especially : interior fittings <br></br>(such as moldings or stairways) of wood.</p>
                     <a href="#slide2" className="btn btn-circle">❯</a>
                 </div>
             </div>

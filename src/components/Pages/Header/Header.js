@@ -55,6 +55,7 @@ const Header = () => {
                 </ul>
             </div>
             <div className="navbar-end">
+                <p className='font-bold mr-2'>{user?.displayName}</p>
                 <div className="tooltip" data-tip={user?.displayName}>
                     <div className="w-10">
                         {
