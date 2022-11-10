@@ -9,7 +9,7 @@ import Servicereview from './Servicereview';
 const Servicedetails = () => {
     const { _id, image, name, service, details, price } = useLoaderData();
     const { user } = useContext(AuthContext);
-    const [reviews, setReviews] = useState([])
+    const [reviewss, setReviewss] = useState([])
 
 
 
@@ -54,13 +54,13 @@ const Servicedetails = () => {
     }
 
     useEffect(() => {
-        fetch('http://localhost:5000/reviews')
+        fetch(`http://localhost:5000/reviews?service=${service}`)
             .then(res => res.json())
             .then(data => {
                 console.log(data);
-                setReviews(data)
+                setReviewss(data)
             })
-    }, [])
+    }, [service])
 
     return (
         <div>
@@ -105,7 +105,7 @@ const Servicedetails = () => {
                 </div>
                 <div className='grid lg:grid-cols-3 md:grid-cols-2 gap-5 my-10 p-5'>
                     {
-                        reviews.map(review => <Servicereview
+                        reviewss.map(review => <Servicereview
                             key={review._id}
                             review={review}
                         ></Servicereview>)

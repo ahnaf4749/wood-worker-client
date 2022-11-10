@@ -21,7 +21,7 @@ const Header = () => {
             user?.uid ?
                 <>
                     <li className='font-bold'><Link to='/reviews'>Reviews</Link></li>
-                    <li className='font-bold'><Link to='/login'>Add Services</Link></li>
+                    <li className='font-bold'><Link to='/addservice'>Add Services</Link></li>
                     <li className='font-bold'>
                         <button onClick={handleLogOut}>Log out</button>
                     </li>
